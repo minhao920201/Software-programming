@@ -1,0 +1,13 @@
+Use UNIX system calls such as 'open()', 'dup()', 'close()', and 'execlp()' to implement the following shell command:  
+
+'wc < foo.bar > result'
+
+Explanation of the Command:
+
+wc: A utility that counts lines, words, and characters.
+
+< foo.bar: Redirects the standard input (stdin) to read from the file foo.bar.
+
+> result: Redirects the standard output (stdout) to write to the file result
+
+Use the 'script' command to demonstrate your program's source code and execution results.

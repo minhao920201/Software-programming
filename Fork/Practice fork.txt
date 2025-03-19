@@ -1,0 +1,9 @@
+Use 'fork()', 'execlp()', 'dup()', and wait() system calls to design a program that utilizes the system command 'wc' to calculate the number of lines and words in a file.
+
+1. The main program first reads a filename, which is the file for which we want to calculate the number of lines and words. After opening this file with 'open()', it creates a process using 'fork()' and then waits for the process to finish using 'wait()'.
+
+2. In the created process, another file is opened to store the results. The 'stdin' and 'stdout' of this process are redirected to the file being analyzed and the file used for storing the results, respectively. Finally, 'execlp()' is used to execute the 'wc' command.
+
+3. After the child process finishes, the main program reads the content of the file used to store the results and displays the calculated number of lines and words.
+
+Please use the 'script' command or provide a screenshot to demonstrate your source code and execution results.

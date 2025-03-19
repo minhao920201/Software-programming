@@ -1,0 +1,3 @@
+Write a C program where the child process executes uptime and who commands each time CTRL-C is pressed or every 10 seconds.
+
+Generate a report using a script or submit a screenshot of the output on Moodle.

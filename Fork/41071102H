@@ -1,0 +1,71 @@
+Script started on Thu 28 Nov 2024 04:41:19 PM CST
+]0;41071102H@telnet: ~/Homework741071102H@telnet:~/Homework7$ ls
+41071102H  foo.bar  homework.c
+]0;41071102H@telnet: ~/Homework741071102H@telnet:~/Homework7$ more homework.c
+#include <stdio.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+	unsigned int status;
+	int fd1, fd2, i;
+	char input[100];
+	scanf("%s", input);
+	fd1 = open(input, O_RDONLY, S_IREAD);
+	if (fd1 == -1)
+	{
+		printf("%s doesn't exist\n", input);
+		return;
+	}
+	i = fork();
+	if (i == 0)
+	{
+		fd2 = open("result", O_WRONLY | O_CREAT, S_IREAD | S_IWRITE);
+		if (fd2 == -1)
+		{
+			printf("failed to create file\n");
+			close(fd1);
+			return;
+		}
+		close(0);
+		dup(fd1);
+		close(fd1);
+		close(1);
+		dup(fd2);
+		close(fd2);
+		execlp("wc", "wc", NULL);
+	}
+	else
+	{
+		close(fd1);
+		wait(&status);
+		fd1 = open("result", O_RDONLY, S_IREAD);
+[7m--More--(68%)[27m[K		if (fd1 == -1)
+[7m--More--(70%)[27m[K		{
+[7m--More--(70%)[27m[K			printf("result doesn't exist\n");
+[7m--More--(74%)[27m[K		}
+[7m--More--(75%)[27m[K		int num1, num2, num3;
+[7m--More--(77%)[27m[K		char buffer[80];
+[7m--More--(79%)[27m[K		int bytesRead = read(fd1, buffer, sizeof(buffer));
+[7m--More--(85%)[27m[K		buffer[bytesRead] = 0;
+[7m--More--(87%)[27m[K		sscanf(buffer, "%d %d %d", &num1, &num2, &num3);
+[7m--More--(93%)[27m[K		printf("Lines: %d, Words: %d\n", num1, num2);
+[7m--More--(98%)[27m[K		close(fd1);
+[7m--More--(99%)[27m[K	}
+[7m--More--(99%)[27m}[K
+]0;41071102H@telnet: ~/Homework741071102H@telnet:~/Homework7$ gcc homework.c
+homework.c: In function ‘main’:
+homework.c:34:3: warning: incompatible implicit declaration of built-in function ‘execlp’
+]0;41071102H@telnet: ~/Homework741071102H@telnet:~/Homework7$ ls
+41071102H  [0m[01;32ma.out[0m  foo.bar  homework.c
+]0;41071102H@telnet: ~/Homework741071102H@telnet:~/Homework7$ ./a.out
+foo.bar
+Lines: 3, Words: 11
+]0;41071102H@telnet: ~/Homework741071102H@telnet:~/Homework7$ wc foo.bar
+ 3 11 85 foo.bar
+]0;41071102H@telnet: ~/Homework741071102H@telnet:~/Homework7$ exit
+exit
+
+Script done on Thu 28 Nov 2024 04:42:27 PM CST

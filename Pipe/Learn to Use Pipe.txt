@@ -1,0 +1,11 @@
+Please implement the following shell command using UNIX system calls like 'open()', 'dup()', 'close()', 'execlp()', 'fork()', and 'pipe()':
+
+ps aux | grep your_username | wc > the_result
+
+Note:
+
+1. Replace "your_username" with your actual username.
+
+2. Reference program: '~ghhwang/SS_course_codes/DUP/who_wc.c'
+
+3. Use Script to generate a report or take a screenshot and submit the assignment on Moodle.
