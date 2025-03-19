@@ -9,3 +9,5 @@
 + [Pipe](https://github.com/minhao920201/Software-programming/blob/main/Pipe/homework.c)
 ## Project
 + [SIC/XE assembler](https://github.com/minhao920201/Software-programming/blob/main/Project/project.py)
+
+![image](https://github.com/minhao920201/Software-programming/blob/main/Project/result.png)
